@@ -1,505 +1,247 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Mahmoud Sabbah - Frontend Developer Portfolio">
-  <title>Mahmoud Sabbah | Frontend Developer</title>
+  <meta name="description" content="Mahmoud Sabbah — Front-End Developer building responsive, interactive web experiences.">
+  <meta name="theme-color" content="#092328">
+  <meta property="og:title" content="Mahmoud Sabbah | Front-End Developer">
+  <meta property="og:description" content="Explore my projects, skills, and front-end development services.">
+  <title>Mahmoud Sabbah | Front-End Developer</title>
 
-  <!-- Bootstrap 5 -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <!-- Bootstrap Icons -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="css/all.css">
-
-  <style>
-    :root{
-      --bg:#08090d;
-      --surface:#101218;
-      --surface-2:#151820;
-      --text:#f5f7fb;
-      --muted:#9ca3af;
-      --accent:#8b5cf6;
-      --accent-soft:rgba(139,92,246,.14);
-      --border:rgba(255,255,255,.09);
-    }
-
-    html{scroll-behavior:smooth;}
-    body{
-      background:
-        radial-gradient(circle at 80% 10%, rgba(139,92,246,.10), transparent 28%),
-        radial-gradient(circle at 10% 45%, rgba(139,92,246,.06), transparent 25%),
-        var(--bg);
-      color:var(--text);
-      font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
-    }
-
-    .navbar{
-      background:rgba(8,9,13,.78)!important;
-      backdrop-filter:blur(14px);
-      border-bottom:1px solid var(--border);
-    }
-    .navbar-brand{font-weight:800;letter-spacing:-.5px;}
-    .brand-dot,.accent{color:var(--accent);}
-    .nav-link{color:#c9cdd5!important;font-weight:500;}
-    .nav-link:hover{color:#fff!important;}
-
-    .hero{min-height:100vh;padding-top:120px;padding-bottom:80px;}
-    .eyebrow{
-      color:var(--accent);
-      font-weight:700;
-      letter-spacing:2px;
-      text-transform:uppercase;
-      font-size:.8rem;
-    }
-    .hero-title{
-      font-size:clamp(3rem,7vw,6.7rem);
-      line-height:.95;
-      letter-spacing:-.07em;
-      font-weight:850;
-    }
-    .hero-subtitle{color:var(--muted);max-width:650px;font-size:1.08rem;line-height:1.8;}
-    .btn-accent{
-      background:var(--accent);
-      color:white;
-      border:1px solid var(--accent);
-      font-weight:700;
-      padding:.8rem 1.25rem;
-    }
-    .btn-accent:hover{background:#7746df;color:white;border-color:#7746df;}
-    .btn-outline-light{border-color:var(--border);font-weight:600;padding:.8rem 1.25rem;}
-
-    .profile-wrap{
-      width:min(430px,82vw);
-      aspect-ratio:1/1;
-      margin:auto;
-      position:relative;
-    }
-    .profile-wrap::before{
-      content:"";
-      position:absolute;
-      inset:-12px;
-      border:1px solid rgba(139,92,246,.35);
-      border-radius:50%;
-    }
-    .profile-wrap::after{
-      content:"";
-      position:absolute;
-      inset:18px;
-      border-radius:50%;
-      background:var(--accent-soft);
-      filter:blur(22px);
-      z-index:-1;
-    }
-    .profile-img{
-      width:100%;
-      height:100%;
-      object-fit:cover;
-      object-position:center 37%;
-      border-radius:50%;
-      border:7px solid var(--surface);
-      box-shadow:0 30px 90px rgba(0,0,0,.55);
-    }
-
-    section{padding:100px 0;}
-    .section-label{color:var(--accent);font-weight:700;letter-spacing:1.5px;text-transform:uppercase;font-size:.78rem;}
-    .section-title{font-size:clamp(2.1rem,4vw,3.7rem);font-weight:800;letter-spacing:-.04em;}
-    .muted{color:var(--muted);line-height:1.85;}
-
-    .glass-card{
-      background:linear-gradient(145deg,rgba(255,255,255,.045),rgba(255,255,255,.018));
-      border:1px solid var(--border);
-      border-radius:24px;
-      transition:.3s ease;
-    }
-    .glass-card:hover{
-      transform:translateY(-6px);
-      border-color:rgba(139,92,246,.38);
-      box-shadow:0 20px 55px rgba(0,0,0,.22);
-    }
-
-    .skill-icon{
-      width:52px;height:52px;border-radius:15px;
-      display:grid;place-items:center;
-      background:var(--accent-soft);
-      color:var(--accent);
-      font-size:1.35rem;
-    }
-    .skill-bar{height:5px;background:#242832;border-radius:99px;overflow:hidden;}
-    .skill-fill{height:100%;background:var(--accent);border-radius:99px;}
-
-    .project-img{
-      height:240px;
-      object-fit:cover;
-      background:#0c0e13;
-    }
-    .project-number{
-      color:var(--accent);
-      font-size:.8rem;
-      font-weight:800;
-      letter-spacing:1px;
-    }
-    .tag{
-      display:inline-block;
-      padding:.35rem .65rem;
-      border-radius:99px;
-      background:#191c24;
-      border:1px solid var(--border);
-      color:#c9cdd5;
-      font-size:.78rem;
-      margin:.2rem;
-    }
-
-    .contact-card{
-      background:linear-gradient(135deg,rgba(139,92,246,.16),rgba(255,255,255,.025));
-      border:1px solid rgba(139,92,246,.25);
-      border-radius:28px;
-    }
-    .contact-link{
-      color:var(--text);
-      text-decoration:none;
-      word-break:break-word;
-    }
-    .contact-link:hover{color:var(--accent);}
-
-    .social{
-      width:44px;height:44px;border-radius:50%;
-      display:grid;place-items:center;
-      color:#fff;text-decoration:none;
-      border:1px solid var(--border);
-      background:#11141b;
-      transition:.25s;
-    }
-    .social:hover{background:var(--accent);color:white;border-color:var(--accent);transform:translateY(-3px);}
-
-    footer{border-top:1px solid var(--border);color:#8e95a3;}
-
-    @media (max-width: 991.98px){
-      .hero{padding-top:110px;}
-      .profile-wrap{margin-top:50px;width:min(360px,75vw);}
-    }
-  </style>
+  <link rel="stylesheet" href="css/style.css">
+  <script>
+    try {
+      const savedTheme = localStorage.getItem('mahmoud-theme');
+      if (savedTheme) document.documentElement.setAttribute('data-theme', savedTheme);
+    } catch (e) {}
+  </script>
 </head>
-
 <body>
-  <!-- NAVBAR -->
-  <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
-    <div class="container py-2">
-      <a class="navbar-brand fs-4" href="#home">MAHMOUD<span class="brand-dot">.</span></a>
-
-      <button class="navbar-toggler shadow-none" type="button" data-bs-toggle="collapse"
-              data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-
-      <div class="collapse navbar-collapse" id="mainNav">
-        <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-2">
-          <li class="nav-item"><a class="nav-link px-lg-3" href="#home">Home</a></li>
-          <li class="nav-item"><a class="nav-link px-lg-3" href="#about">About</a></li>
-          <li class="nav-item"><a class="nav-link px-lg-3" href="#skills">Skills</a></li>
-          <li class="nav-item"><a class="nav-link px-lg-3" href="#projects">Projects</a></li>
-          <li class="nav-item mt-2 mt-lg-0">
-            <a class="btn btn-accent rounded-pill ms-lg-2" href="#contact">Let's Talk <i class="bi bi-arrow-up-right ms-1"></i></a>
-          </li>
+  <nav class="navbar navbar-expand-lg fixed-top site-navbar" id="siteNavbar" aria-label="Main navigation">
+    <div class="container">
+      <a class="navbar-brand brand" href="#home" aria-label="Mahmoud Sabbah home">mahmoud sabbah<span>.</span></a>
+      <div class="nav-actions d-flex align-items-center gap-2 order-lg-3">
+        <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch color theme" title="Switch theme">
+          <i class="bi bi-sun-fill" id="themeIcon" aria-hidden="true"></i>
+        </button>
+        <a class="btn btn-accent nav-cta d-none d-sm-inline-flex" href="#contact">Let's Talk <i class="bi bi-arrow-up-right"></i></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="toggler-lines"><span></span><span></span></span>
+        </button>
+      </div>
+      <div class="collapse navbar-collapse order-lg-2" id="mainNav">
+        <ul class="navbar-nav ms-auto me-lg-4 align-items-lg-center">
+          <li class="nav-item"><a class="nav-link active" href="#home">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="#education">Education</a></li>
+          <li class="nav-item"><a class="nav-link" href="#experience">Experience</a></li>
+          <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+          <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+          <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
         </ul>
       </div>
     </div>
   </nav>
 
-  <!-- HERO -->
-  <header id="home" class="hero d-flex align-items-center">
-    <div class="container">
-      <div class="row align-items-center g-5">
-        <div class="col-lg-7">
-          <div class="eyebrow mb-3">Frontend Developer</div>
-          <h1 class="hero-title mb-4">Hi, I'm<br><span class="accent">Mahmoud</span> Sabbah.</h1>
-          <p class="hero-subtitle mb-4">
-            Computer Science student and Frontend Developer focused on creating clean,
-            responsive and modern web experiences using HTML, CSS, Bootstrap, JavaScript and React.
-          </p>
-
-          <div class="d-flex flex-wrap gap-3">
-            <a href="#projects" class="btn btn-accent rounded-pill">
-              View My Work <i class="bi bi-arrow-down-right ms-1"></i>
-            </a>
-            <a href="mailto:elhaagmahmoudsabbah@gmail.com" class="btn btn-outline-light rounded-pill">
-              Contact Me <i class="bi bi-envelope ms-1"></i>
-            </a>
+  <main>
+    <section class="hero section-pad" id="home">
+      <div class="hero-grid-pattern" aria-hidden="true"></div>
+      <div class="container position-relative">
+        <div class="row align-items-center g-5 min-vh-hero">
+          <div class="col-lg-7 reveal">
+            <div class="eyebrow"><span class="status-dot"></span> AVAILABLE FOR OPPORTUNITIES</div>
+            <p class="hero-kicker">HELLO, I'M MAHMOUD SABBAH</p>
+            <h1 class="hero-title">Building digital<br>experiences that<br><span class="text-accent">make an impact.</span></h1>
+            <p class="hero-copy">I'm a Computer Science student and <strong>Front-End Developer</strong> passionate about building responsive, interactive, and user-friendly web experiences.</p>
+            <div class="d-flex flex-wrap gap-3 hero-buttons">
+              <a class="btn btn-accent btn-lg" href="#projects">View My Projects <i class="bi bi-arrow-up-right ms-2"></i></a>
+              <a class="btn btn-outline-custom btn-lg" href="assets/cv/mahmoud-sabbah-cv.pdf" download>Download CV <i class="bi bi-download ms-2"></i></a>
+            </div>
+            <div class="hero-socials d-flex align-items-center gap-3">
+              <span>FIND ME ON</span>
+              <a href="https://linkedin.com/in/mahmoud-mohamed-sabbah" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+              <a href="https://github.com/elhaagmahmoudsabbah" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="bi bi-github"></i></a>
+              <a href="mailto:elhaagmahmoudsabbah@gmail.com" aria-label="Email"><i class="bi bi-envelope"></i></a>
+            </div>
           </div>
-
-          <div class="d-flex flex-wrap gap-4 mt-5 text-secondary small">
-            <span><i class="bi bi-code-slash accent me-2"></i>Web Development</span>
-            <span><i class="bi bi-phone accent me-2"></i>Responsive Design</span>
-            <span><i class="bi bi-lightning-charge accent me-2"></i>Modern UI</span>
-          </div>
-        </div>
-
-        <div class="col-lg-5">
-          <div class="profile-wrap">
-            <img src="img/WhatsApp Image 2026-09-13 at 2.54.50 AM.jpeg" alt="Mahmoud Sabbah" class="profile-img">
-          </div>
-        </div>
-      </div>
-    </div>
-  </header>
-
-  <!-- ABOUT -->
-  <section id="about">
-    <div class="container">
-      <div class="row justify-content-between align-items-end g-4 mb-5">
-        <div class="col-lg-6">
-          <div class="section-label mb-3">01 — About Me</div>
-          <h2 class="section-title mb-0">Turning ideas into <span class="accent">digital experiences.</span></h2>
-        </div>
-        <div class="col-lg-5">
-          <p class="muted mb-0">
-            I'm Mahmoud Sabbah, a Computer Science student and aspiring professional
-            Frontend Developer. I enjoy transforming ideas and designs into functional,
-            responsive and user-friendly websites.
-          </p>
-        </div>
-      </div>
-
-      <div class="row g-4">
-        <div class="col-md-4">
-          <div class="glass-card h-100 p-4 p-lg-5">
-            <div class="skill-icon mb-4"><i class="bi bi-mortarboard"></i></div>
-            <h4 class="fw-bold">Computer Science</h4>
-            <p class="muted mb-0">Building a strong foundation in programming, problem solving and software development.</p>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="glass-card h-100 p-4 p-lg-5">
-            <div class="skill-icon mb-4"><i class="bi bi-window-stack"></i></div>
-            <h4 class="fw-bold">Frontend Development</h4>
-            <p class="muted mb-0">Creating responsive interfaces with clean structure, modern layouts and reusable components.</p>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="glass-card h-100 p-4 p-lg-5">
-            <div class="skill-icon mb-4"><i class="bi bi-graph-up-arrow"></i></div>
-            <h4 class="fw-bold">Always Learning</h4>
-            <p class="muted mb-0">Currently strengthening JavaScript and React while continuously improving my development skills.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- SKILLS -->
-  <section id="skills">
-    <div class="container">
-      <div class="section-label mb-3">02 — Skills</div>
-      <div class="row align-items-end g-4 mb-5">
-        <div class="col-lg-7">
-          <h2 class="section-title mb-0">Tools I use to <span class="accent">build.</span></h2>
-        </div>
-        <div class="col-lg-5">
-          <p class="muted mb-0">A practical frontend toolkit focused on building responsive and interactive websites.</p>
-        </div>
-      </div>
-
-      <div class="row g-4">
-        <div class="col-md-6">
-          <div class="glass-card p-4 p-lg-5">
-            <div class="d-flex justify-content-between align-items-center mb-3">
-              <div class="d-flex align-items-center gap-3">
-                <div class="skill-icon"><i class="bi bi-filetype-html"></i></div>
-                <div><h5 class="mb-1 fw-bold">HTML5</h5><small class="text-secondary">Semantic Structure</small></div>
+          <div class="col-lg-5 reveal reveal-delay-2">
+            <div class="hero-visual">
+              <div class="hero-orbit orbit-one"></div><div class="hero-orbit orbit-two"></div>
+              <div class="portrait-frame">
+                <img src="img/WhatsApp Image 2026-09-13 at 2.54.50 AM.jpeg" alt="Portrait of Mahmoud Sabbah" class="hero-portrait" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+                <div class="portrait-placeholder"><i class="bi bi-person-bounding-box"></i><span>Add your photo</span><small>assets/images/profile.jpg</small></div>
               </div>
-              <span class="accent fw-bold">90%</span>
-            </div>
-            <div class="skill-bar"><div class="skill-fill" style="width:90%"></div></div>
-          </div>
-        </div>
-
-        <div class="col-md-6">
-          <div class="glass-card p-4 p-lg-5">
-            <div class="d-flex justify-content-between align-items-center mb-3">
-              <div class="d-flex align-items-center gap-3">
-                <div class="skill-icon"><i class="bi bi-filetype-css"></i></div>
-                <div><h5 class="mb-1 fw-bold">CSS3</h5><small class="text-secondary">Layouts & Styling</small></div>
-              </div>
-              <span class="accent fw-bold">85%</span>
-            </div>
-            <div class="skill-bar"><div class="skill-fill" style="width:85%"></div></div>
-          </div>
-        </div>
-
-        <div class="col-md-6">
-          <div class="glass-card p-4 p-lg-5">
-            <div class="d-flex justify-content-between align-items-center mb-3">
-              <div class="d-flex align-items-center gap-3">
-                <div class="skill-icon"><i class="bi bi-bootstrap"></i></div>
-                <div><h5 class="mb-1 fw-bold">Bootstrap</h5><small class="text-secondary">Responsive UI</small></div>
-              </div>
-              <span class="accent fw-bold">90%</span>
-            </div>
-            <div class="skill-bar"><div class="skill-fill" style="width:90%"></div></div>
-          </div>
-        </div>
-
-        <div class="col-md-6">
-          <div class="glass-card p-4 p-lg-5">
-            <div class="d-flex justify-content-between align-items-center mb-3">
-              <div class="d-flex align-items-center gap-3">
-                <div class="skill-icon"><i class="bi bi-filetype-js"></i></div>
-                <div><h5 class="mb-1 fw-bold">JavaScript</h5><small class="text-secondary">Interactive Web</small></div>
-              </div>
-              <span class="accent fw-bold">80%</span>
-            </div>
-            <div class="skill-bar"><div class="skill-fill" style="width:80%"></div></div>
-          </div>
-        </div>
-
-        <div class="col-md-6">
-          <div class="glass-card p-4 p-lg-5">
-            <div class="d-flex justify-content-between align-items-center mb-3">
-              <div class="d-flex align-items-center gap-3">
-                <div class="skill-icon"><i class="bi bi-braces"></i></div>
-                <div><h5 class="mb-1 fw-bold">React</h5><small class="text-secondary">Component Based UI</small></div>
-              </div>
-              <span class="accent fw-bold">70%</span>
-            </div>
-            <div class="skill-bar"><div class="skill-fill" style="width:70%"></div></div>
-          </div>
-        </div>
-
-        <div class="col-md-6">
-          <div class="glass-card h-100 p-4 p-lg-5 d-flex align-items-center">
-            <div>
-              <div class="section-label mb-2">Next Step</div>
-              <h4 class="fw-bold mb-2">Growing into a stronger Software Engineer.</h4>
-              <p class="muted mb-0">Continuing to improve JavaScript, React, problem solving and software engineering fundamentals.</p>
+              <div class="floating-card code-card"><span class="code-dot"></span><span>Clean code, thoughtful design.</span></div>
+              <div class="floating-card tech-card"><i class="bi bi-code-slash"></i><div><strong>Front-End</strong><small>Developer</small></div></div>
+              <div class="hero-stamp"><span>DESIGN</span><i class="bi bi-stars"></i><span>DEVELOP</span></div>
             </div>
           </div>
         </div>
+        <a href="#about" class="scroll-cue" aria-label="Scroll to About section"><span></span> SCROLL TO EXPLORE</a>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- PROJECTS -->
-  <section id="projects">
-    <div class="container">
-      <div class="section-label mb-3">03 — Selected Work</div>
-      <div class="row align-items-end g-4 mb-5">
-        <div class="col-lg-7">
-          <h2 class="section-title mb-0">A few things I've <span class="accent">built.</span></h2>
-        </div>
-        <div class="col-lg-5">
-          <p class="muted mb-0">Projects that showcase my frontend development, responsive design and JavaScript skills.</p>
-        </div>
-      </div>
-
-      <div class="row g-4">
-        <div class="col-lg-6">
-          <article class="glass-card overflow-hidden h-100">
-            <div class="p-2">
-              <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1200&q=80"
-                   class="project-img w-100 rounded-4" alt="Hotel project preview">
-            </div>
-            <div class="p-4 p-lg-5">
-              <div class="project-number mb-2">PROJECT 01</div>
-              <h3 class="fw-bold mb-3">Hotel Website</h3>
-              <p class="muted">
-                A modern hotel website focused on a clean visual experience, responsive layout
-                and polished frontend presentation.
-              </p>
-              <div class="mb-4">
-                <span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">Bootstrap</span>
-              </div>
-              <a href="https://elhaagmahmoudsabbah.github.io/Hotel-project/" target="_blank" rel="noopener"
-                 class="btn btn-accent rounded-pill">
-                Live Demo <i class="bi bi-box-arrow-up-right ms-1"></i>
-              </a>
-            </div>
-          </article>
-        </div>
-
-        <div class="col-lg-6">
-          <article class="glass-card overflow-hidden h-100">
-            <div class="p-2">
-              <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80"
-                   class="project-img w-100 rounded-4" alt="JavaScript project preview">
-            </div>
-            <div class="p-4 p-lg-5">
-              <div class="project-number mb-2">PROJECT 02</div>
-              <h3 class="fw-bold mb-3">JavaScript Project</h3>
-              <p class="muted">
-                An interactive web project built to practice JavaScript logic, DOM manipulation
-                and dynamic user interactions.
-              </p>
-              <div class="mb-4">
-                <span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span>
-              </div>
-              <a href="https://elhaagmahmoudsabbah.github.io/project-java-script/" target="_blank" rel="noopener"
-                 class="btn btn-accent rounded-pill">
-                Live Demo <i class="bi bi-box-arrow-up-right ms-1"></i>
-              </a>
-            </div>
-          </article>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CONTACT -->
-  <section id="contact">
-    <div class="container">
-      <div class="contact-card p-4 p-md-5 p-lg-5">
+    <section class="section-pad section-soft" id="about">
+      <div class="container">
+        <div class="section-heading reveal"><p class="section-label"> A LITTLE ABOUT ME</p><h2>Curiosity meets <span class="text-accent">creativity.</span></h2></div>
         <div class="row align-items-center g-5">
-          <div class="col-lg-6">
-            <div class="section-label mb-3">04 — Contact</div>
-            <h2 class="section-title mb-3">Let's build something <span class="accent">great.</span></h2>
-            <p class="muted mb-0">
-              Have a project, freelance opportunity or just want to connect?
-              Feel free to reach out.
-            </p>
+          <div class="col-lg-5 reveal">
+            <div class="about-image-wrap">
+              <img src="img/WhatsApp Image 2026-09-13 at 2.54.50 AM.jpeg" alt="Mahmoud working on a web development project" class="about-image" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+              <div class="about-placeholder"><i class="bi bi-laptop"></i><span>Add your About image</span><small>assets/images/about.jpg</small></div>
+              <div class="image-caption"><i class="bi bi-braces"></i><span>Always learning.<br><strong>Always building.</strong></span></div>
+            </div>
           </div>
+          <div class="col-lg-7 reveal reveal-delay-1">
+            <p class="section-label">WHO I AM</p>
+            <h3 class="content-title">I turn ideas into useful digital experiences.</h3>
+            <p class="body-copy">I'm a Computer Science student at Zagazig University with a strong interest in Front-End Development and modern web technologies. I enjoy creating responsive websites, improving user experiences, and learning how design and code work together to solve real problems.</p>
+            <p class="body-copy">My current focus is strengthening my front-end skills, writing cleaner code, and building practical projects that demonstrate what I can do.</p>
+            <div class="about-facts">
+              <div class="fact"><span class="fact-icon"><i class="bi bi-mortarboard"></i></span><div><strong>Education</strong><span>Computer Science</span></div></div>
+              <div class="fact"><span class="fact-icon"><i class="bi bi-window-stack"></i></span><div><strong>Focus</strong><span>Front-End Development</span></div></div>
+              <div class="fact"><span class="fact-icon"><i class="bi bi-lightbulb"></i></span><div><strong>Mindset</strong><span>Continuous Learning</span></div></div>
+            </div>
+            <div class="social-links mt-4">
+              <a href="https://linkedin.com/in/mahmoud-mohamed-sabbah" target="_blank" rel="noopener noreferrer">LinkedIn <i class="bi bi-arrow-up-right"></i></a>
+              <a href="https://github.com/elhaagmahmoudsabbah" target="_blank" rel="noopener noreferrer">GitHub <i class="bi bi-arrow-up-right"></i></a>
+              <a href="mailto:elhaagmahmoudsabbah@gmail.com">Email me <i class="bi bi-arrow-up-right"></i></a>
+            </div>
+            <a class="text-link mt-4 d-inline-flex" href="#contact">Let's work together <i class="bi bi-arrow-up-right"></i></a>
+          </div>
+        </div>
+      </div>
+    </section>
 
-          <div class="col-lg-6">
-            <div class="d-flex flex-column gap-3">
-              <a class="contact-link d-flex align-items-center gap-3 p-3 rounded-4 bg-black bg-opacity-25"
-                 href="mailto:elhaagmahmoudsabbah@gmail.com">
-                <span class="skill-icon flex-shrink-0"><i class="bi bi-envelope"></i></span>
-                <span><small class="text-secondary d-block">Email</small><strong>elhaagmahmoudsabbah@gmail.com</strong></span>
-              </a>
+    <section class="section-pad" id="education">
+      <div class="container">
+        <div class="section-heading reveal"><p class="section-label">MY BACKGROUND</p><h2>Education & <span class="text-accent">learning.</span></h2><p class="section-intro">Building a strong foundation, one concept and project at a time.</p></div>
+        <div class="timeline">
+          <article class="timeline-item reveal"><span class="timeline-marker"><i class="bi bi-mortarboard"></i></span><div class="timeline-card"><div class="timeline-meta"><span class="tag">EDUCATION</span><span>Undergraduate</span></div><h3>Zagazig University</h3><p class="timeline-subtitle">Faculty of Science · Computer Science</p><p class="body-copy mb-0">Developing my foundation in computer science, programming, problem solving, and software development.</p></div></article>
+          <article class="timeline-item reveal"><span class="timeline-marker"><i class="bi bi-code-square"></i></span><div class="timeline-card"><div class="timeline-meta"><span class="tag">PRACTICAL LEARNING</span><span>Ongoing</span></div><h3>Front-End Development</h3><p class="timeline-subtitle">HTML · CSS · JavaScript · Bootstrap · React</p><p class="body-copy mb-0">Learning by building websites, practicing responsive layouts, and improving code quality through hands-on projects.</p></div></article>
+        </div>
+      </div>
+    </section>
 
-              <a class="contact-link d-flex align-items-center gap-3 p-3 rounded-4 bg-black bg-opacity-25"
-                 href="tel:+201066313097">
-                <span class="skill-icon flex-shrink-0"><i class="bi bi-telephone"></i></span>
-                <span><small class="text-secondary d-block">Phone</small><strong>01066313097</strong></span>
-              </a>
-              <a class="contact-link d-flex align-items-center gap-3 p-3 rounded-4 bg-black bg-opacity-25"
-                 href="https://wa.me/+201066313097">
-                <span class="skill-icon flex-shrink-0"><i class="fa-brands fa-whatsapp"></i></i></span>
-                <span><small class="text-secondary d-block">whatsapp</small><strong>01066313097</strong></span>
-              </a>
+    <section class="section-pad section-soft" id="experience">
+      <div class="container">
+        <div class="section-heading reveal"><p class="section-label"> WHAT I'VE BEEN DOING</p><h2>Experience through <span class="text-accent">building.</span></h2><p class="section-intro">A practical learning journey shaped by projects, experimentation, and steady improvement.</p></div>
+        <div class="row g-4">
+          <div class="col-md-6 reveal"><article class="experience-card h-100"><div class="experience-icon"><i class="bi bi-window"></i></div><span class="tag">PERSONAL PROJECTS</span><h3>Front-End Project Development</h3><p class="body-copy">Building responsive website interfaces and interactive features using HTML, CSS, Bootstrap, and JavaScript.</p><div class="tech-list"><span>HTML</span><span>CSS</span><span>Bootstrap</span><span>JavaScript</span></div></article></div>
+          <div class="col-md-6 reveal reveal-delay-1"><article class="experience-card h-100"><div class="experience-icon"><i class="bi bi-journal-code"></i></div><span class="tag">CONTINUOUS LEARNING</span><h3>Computer Science & Web Technologies</h3><p class="body-copy">Strengthening programming fundamentals, data structures, problem solving, and modern front-end development practices.</p><div class="tech-list"><span>Problem Solving</span><span>React</span><span>Clean Code</span></div></article></div>
+        </div>
+        <p class="small-note mt-3"><i class="bi bi-info-circle me-1"></i> This section reflects personal projects and learning, not claimed employment history.</p>
+      </div>
+    </section>
 
-              <a class="contact-link d-flex align-items-center gap-3 p-3 rounded-4 bg-black bg-opacity-25"
-                 href="https://www.linkedin.com/in/mahmoud-sabbah-489956341/" target="_blank" rel="noopener">
-                <span class="skill-icon flex-shrink-0"><i class="bi bi-linkedin"></i></span>
-                <span><small class="text-secondary d-block">LinkedIn</small><strong>Mahmoud Sabbah</strong></span>
-              </a>
+    <section class="section-pad" id="skills">
+      <div class="container">
+        <div class="section-heading reveal"><p class="section-label">MY TOOLKIT</p><h2>Skills that bring ideas <span class="text-accent">to life.</span></h2><p class="section-intro">The technologies and practices I'm using to build better web experiences.</p></div>
+        <div class="row g-4">
+          <div class="col-lg-6 reveal"><div class="skill-panel h-100"><div class="panel-heading"><span class="panel-icon"><i class="bi bi-code-slash"></i></span><div><h3>Front-End Development</h3><p>Core web technologies</p></div></div><div class="skill-chip-grid"><span><i class="bi bi-filetype-html"></i> HTML5</span><span><i class="bi bi-filetype-css"></i> CSS3</span><span><i class="bi bi-filetype-js"></i> JavaScript</span><span><i class="bi bi-bootstrap"></i> Bootstrap</span><span><i class="bi bi-atom"></i> React.js</span><span><i class="bi bi-phone"></i> Responsive Design</span></div></div></div>
+          <div class="col-lg-6 reveal reveal-delay-1"><div class="skill-panel h-100"><div class="panel-heading"><span class="panel-icon"><i class="bi bi-graph-up-arrow"></i></span><div><h3>Core Competencies</h3><p>Selected self-assessed scores</p></div></div>
+            <div class="skill-meter" data-progress="85"><div class="meter-label"><span>Data Structures</span><strong>85%</strong></div><div class="progress"><div class="progress-bar" role="progressbar" aria-label="Data Structures" aria-valuemin="0" aria-valuemax="100" aria-valuenow="85"></div></div></div>
+            <div class="skill-meter" data-progress="90"><div class="meter-label"><span>Problem Solving</span><strong>90%</strong></div><div class="progress"><div class="progress-bar" role="progressbar" aria-label="Problem Solving" aria-valuemin="0" aria-valuemax="100" aria-valuenow="90"></div></div></div>
+            <div class="skill-meter" data-progress="95"><div class="meter-label"><span>Clean Code</span><strong>95%</strong></div><div class="progress"><div class="progress-bar" role="progressbar" aria-label="Clean Code" aria-valuemin="0" aria-valuemax="100" aria-valuenow="95"></div></div></div>
+            <p class="small-note mb-0 mt-3">Percentages are self-assessed indicators, not formal test results.</p>
+          </div></div>
+          <div class="col-12 reveal"><div class="tools-strip"><span class="tools-label">ALSO WORKING WITH</span><span><i class="bi bi-git"></i> Git</span><span><i class="bi bi-github"></i> GitHub</span><span><i class="bi bi-bug"></i> Debugging</span><span><i class="bi bi-braces-asterisk"></i> DOM Manipulation</span></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-pad section-soft" id="projects">
+      <div class="container">
+        <div class="section-heading reveal"><p class="section-label"> SELECTED WORK</p><h2>Projects made with <span class="text-accent">purpose.</span></h2><p class="section-intro">A selection of my practice projects and front-end experiments.</p></div>
+        <div class="project-filters reveal" role="group" aria-label="Filter projects">
+          <button class="filter-btn active" type="button" data-filter="all">All Projects</button><button class="filter-btn" type="button" data-filter="website">Websites</button><button class="filter-btn" type="button" data-filter="javascript">JavaScript</button>
+        </div>
+        <div class="row g-4 project-grid">
+          <div class="col-md-6 col-xl-4 project-item reveal" data-category="website"><article class="project-card h-100"><a class="project-image project-image-restaurant" href="https://elhaagmahmoudsabbah.github.io/restaurant-web/" target="_blank" rel="noopener noreferrer" aria-label="Open Restaurant Website"><img src="assets/images/projects/restaurant.jpg" alt="Restaurant website preview" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span class="project-placeholder"><i class="bi bi-cup-hot"></i><small>Restaurant Website</small><em>Add screenshot: restaurant.jpg</em></span><span class="image-arrow"><i class="bi bi-arrow-up-right"></i></span></a><div class="project-content"><div class="project-topline"><span class="tag">WEB DESIGN</span><span class="project-number">01</span></div><h3>Restaurant Website</h3><p>A responsive restaurant concept with bold visuals, structured sections, and a user-friendly browsing experience.</p><div class="tech-list"><span>HTML</span><span>CSS</span><span>Bootstrap</span><span>JS</span></div><a class="project-link" href="https://elhaagmahmoudsabbah.github.io/restaurant-web/" target="_blank" rel="noopener noreferrer">Live Demo <i class="bi bi-arrow-up-right"></i></a></div></article></div>
+          <div class="col-md-6 col-xl-4 project-item reveal reveal-delay-1" data-category="website"><article class="project-card h-100"><a class="project-image project-image-hotel" href="https://elhaagmahmoudsabbah.github.io/Hotel-project/" target="_blank" rel="noopener noreferrer" aria-label="Open Hotel Website"><img src="assets/images/projects/hotel.jpg" alt="Hotel website preview" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span class="project-placeholder"><i class="bi bi-buildings"></i><small>Hotel Website</small><em>Add screenshot: hotel.jpg</em></span><span class="image-arrow"><i class="bi bi-arrow-up-right"></i></span></a><div class="project-content"><div class="project-topline"><span class="tag">WEB DESIGN</span><span class="project-number">02</span></div><h3>Hotel Website</h3><p>A hotel website concept focused on clear presentation, clean layouts, and a comfortable browsing experience.</p><div class="tech-list"><span>HTML</span><span>CSS</span><span>Bootstrap</span><span>JS</span></div><a class="project-link" href="https://elhaagmahmoudsabbah.github.io/Hotel-project/" target="_blank" rel="noopener noreferrer">Live Demo <i class="bi bi-arrow-up-right"></i></a></div></article></div>
+          <div class="col-md-6 col-xl-4 project-item reveal reveal-delay-2" data-category="javascript"><article class="project-card h-100"><a class="project-image project-image-js" href="https://elhaagmahmoudsabbah.github.io/project-java-script/" target="_blank" rel="noopener noreferrer" aria-label="Open JavaScript Project"><img src="assets/images/projects/javascript-project.jpg" alt="JavaScript project preview" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span class="project-placeholder"><i class="bi bi-braces"></i><small>JavaScript Project</small><em>Add screenshot: javascript-project.jpg</em></span><span class="image-arrow"><i class="bi bi-arrow-up-right"></i></span></a><div class="project-content"><div class="project-topline"><span class="tag">INTERACTIVE</span><span class="project-number">03</span></div><h3>JavaScript Interactions</h3><p>An interactive web project exploring DOM manipulation, dynamic behavior, and client-side functionality.</p><div class="tech-list"><span>HTML5</span><span>CSS3</span><span>JavaScript</span></div><a class="project-link" href="https://elhaagmahmoudsabbah.github.io/project-java-script/" target="_blank" rel="noopener noreferrer">Live Demo <i class="bi bi-arrow-up-right"></i></a></div></article></div>
+          <div class="col-md-6 col-xl-4 project-item reveal" data-category="website"><article class="project-card h-100"><a class="project-image project-image-pricing" href="https://elhaagmahmoudsabbah.github.io/price/" target="_blank" rel="noopener noreferrer" aria-label="Open Pricing Website"><img src="assets/images/projects/pricing.jpg" alt="Pricing website preview" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span class="project-placeholder"><i class="bi bi-tags"></i><small>Pricing Website</small><em>Add screenshot: pricing.jpg</em></span><span class="image-arrow"><i class="bi bi-arrow-up-right"></i></span></a><div class="project-content"><div class="project-topline"><span class="tag">WEB DESIGN</span><span class="project-number">04</span></div><h3>Pricing Website</h3><p>A pricing page concept with structured plans, clear content hierarchy, and a modern visual presentation.</p><div class="tech-list"><span>HTML</span><span>CSS</span><span>Bootstrap</span></div><a class="project-link" href="https://elhaagmahmoudsabbah.github.io/price/" target="_blank" rel="noopener noreferrer">Live Demo <i class="bi bi-arrow-up-right"></i></a></div></article></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-pad" id="achievements">
+      <div class="container">
+        <div class="section-heading reveal"><p class="section-label">MILESTONES</p><h2>Progress over <span class="text-accent">perfection.</span></h2><p class="section-intro">Every project is a step forward. More milestones coming soon.</p></div>
+        <div class="row g-4">
+          <div class="col-sm-6 col-lg-3 reveal"><div class="milestone-card"><span class="milestone-icon"><i class="bi bi-code-square"></i></span><h3>Building Projects</h3><p>Turning concepts into working web experiences.</p></div></div>
+          <div class="col-sm-6 col-lg-3 reveal reveal-delay-1"><div class="milestone-card"><span class="milestone-icon"><i class="bi bi-book"></i></span><h3>Learning Every Day</h3><p>Growing my knowledge of web technologies and CS fundamentals.</p></div></div>
+          <div class="col-sm-6 col-lg-3 reveal reveal-delay-2"><div class="milestone-card"><span class="milestone-icon"><i class="bi bi-phone"></i></span><h3>Responsive Design</h3><p>Practicing layouts that work across screen sizes.</p></div></div>
+          <div class="col-sm-6 col-lg-3 reveal reveal-delay-3"><div class="milestone-card"><span class="milestone-icon"><i class="bi bi-stars"></i></span><h3>What's Next?</h3><p>New challenges, stronger skills, and more projects ahead.</p></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-pad section-soft" id="testimonials">
+      <div class="container"><div class="section-heading reveal"><p class="section-label"> KIND WORDS</p><h2>Good work starts with <span class="text-accent">good people.</span></h2></div>
+        <div class="testimonial-empty reveal"><div class="quote-mark"><i class="bi bi-chat-quote"></i></div><h3>Testimonials are on the way.</h3><p>Great collaborations start with great communication. Genuine feedback will be added as I continue working with clients and collaborators.</p><a href="#contact" class="text-link">Be the first to collaborate <i class="bi bi-arrow-up-right"></i></a></div>
+      </div>
+    </section>
+
+    <section class="section-pad" id="services">
+      <div class="container">
+        <div class="section-heading reveal"><p class="section-label"> HOW I CAN HELP</p><h2>Services built around <span class="text-accent">your goals.</span></h2><p class="section-intro">Front-end services focused on responsive design, usability, and clean implementation.</p></div>
+        <div class="row g-4">
+          <div class="col-md-6 col-xl-4 reveal"><article class="service-card h-100"><span class="service-icon"><i class="bi bi-phone"></i></span><span class="service-index">01</span><h3>Responsive Websites</h3><p>Websites that adapt smoothly to mobile, tablet, and desktop screens.</p><a href="#contact" class="service-link">Discuss a project <i class="bi bi-arrow-up-right"></i></a></article></div>
+          <div class="col-md-6 col-xl-4 reveal reveal-delay-1"><article class="service-card h-100"><span class="service-icon"><i class="bi bi-window"></i></span><span class="service-index">02</span><h3>Landing Pages</h3><p>Focused landing pages with clear content hierarchy and purposeful calls to action.</p><a href="#contact" class="service-link">Discuss a project <i class="bi bi-arrow-up-right"></i></a></article></div>
+          <div class="col-md-6 col-xl-4 reveal reveal-delay-2"><article class="service-card h-100"><span class="service-icon"><i class="bi bi-palette"></i></span><span class="service-index">03</span><h3>UI Implementation</h3><p>Turning design concepts into clean, responsive, functional web interfaces.</p><a href="#contact" class="service-link">Discuss a project <i class="bi bi-arrow-up-right"></i></a></article></div>
+          <div class="col-md-6 col-xl-4 reveal"><article class="service-card h-100"><span class="service-icon"><i class="bi bi-wrench-adjustable"></i></span><span class="service-index">04</span><h3>Website Improvements</h3><p>Improving layout consistency, responsive behavior, and front-end usability.</p><a href="#contact" class="service-link">Discuss a project <i class="bi bi-arrow-up-right"></i></a></article></div>
+          <div class="col-md-6 col-xl-4 reveal reveal-delay-1"><article class="service-card h-100"><span class="service-icon"><i class="bi bi-gear"></i></span><span class="service-index">05</span><h3>Website Maintenance</h3><p>Helping maintain existing websites and fix front-end issues.</p><a href="#contact" class="service-link">Discuss a project <i class="bi bi-arrow-up-right"></i></a></article></div>
+          <div class="col-md-6 col-xl-4 reveal reveal-delay-2"><article class="service-card h-100"><span class="service-icon"><i class="bi bi-lightning-charge"></i></span><span class="service-index">06</span><h3>JavaScript Features</h3><p>Adding interactive components and useful client-side functionality.</p><a href="#contact" class="service-link">Discuss a project <i class="bi bi-arrow-up-right"></i></a></article></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-pad contact-section" id="contact">
+      <div class="container">
+        <div class="contact-shell reveal">
+          <div class="contact-decoration" aria-hidden="true"></div>
+          <div class="row g-5 position-relative">
+            <div class="col-lg-5">
+              <p class="section-label"> LET'S CONNECT</p><h2 class="contact-title">Have a project<br>in <span class="text-accent">mind?</span></h2>
+              <p class="body-copy">Have an idea, a question, or an opportunity? Send me a message. I'd be happy to hear from you.</p>
+              <div class="contact-details">
+                <a href="mailto:elhaagmahmoudsabbah@gmail.com"><span><i class="bi bi-envelope"></i></span><div><small>EMAIL ME</small><strong>elhaagmahmoudsabbah@gmail.com</strong></div></a>
+                <a href="https://wa.me/201066313097" target="_blank" rel="noopener noreferrer"><span><i class="bi bi-whatsapp"></i></span><div><small>CALL / WHATSAPP</small><strong>+20 106 631 3097</strong></div></a>
+                <a href="https://linkedin.com/in/mahmoud-mohamed-sabbah" target="_blank" rel="noopener noreferrer"><span><i class="bi bi-linkedin"></i></span><div><small>CONNECT ON</small><strong>LinkedIn</strong></div></a>
+              </div>
+            </div>
+            <div class="col-lg-7">
+              <form id="contactForm" class="contact-form" novalidate>
+                <div class="row g-3">
+                  <div class="col-md-6"><label for="contactName" class="form-label">Your name</label><input class="form-control" id="contactName" name="name" type="text" placeholder="mahmoud sabbah" required minlength="2"><div class="invalid-feedback">Please enter your name.</div></div>
+                  <div class="col-md-6"><label for="contactEmail" class="form-label">Email address</label><input class="form-control" id="contactEmail" name="email" type="email" placeholder="you@gmail.com" required><div class="invalid-feedback">Please enter a valid email.</div></div>
+                  <div class="col-12"><label for="contactSubject" class="form-label">Subject</label><input class="form-control" id="contactSubject" name="subject" type="text" placeholder="What's it about?" required><div class="invalid-feedback">Please add a subject.</div></div>
+                  <div class="col-12"><label for="contactMessage" class="form-label">Your message</label><textarea class="form-control" id="contactMessage" name="message" rows="5" placeholder="Tell me a little about your project..." required minlength="10"></textarea><div class="invalid-feedback">Please write a message (at least 10 characters).</div></div>
+                  <div class="col-12"><button class="btn btn-accent btn-lg w-100" type="submit">Prepare Email <i class="bi bi-send ms-2"></i></button><p class="form-note mt-3 mb-0"><i class="bi bi-info-circle me-1"></i> This form opens your email app; it does not send data to a server.</p><div id="formStatus" class="form-status mt-2" role="status" aria-live="polite"></div></div>
+                </div>
+              </form>
             </div>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
+  </main>
 
-  <footer class="py-4">
-    <div class="container d-flex flex-column flex-md-row justify-content-between align-items-center gap-3">
-      <div>© 2026 Mahmoud Sabbah. All rights reserved.</div>
-      <div class="d-flex gap-2">
-        <a class="social" href="mailto:elhaagmahmoudsabbah@gmail.com" aria-label="Email"><i class="bi bi-envelope"></i></a>
-        <a class="social" href="tel:+201066313097" aria-label="Phone"><i class="bi bi-telephone"></i></a>
-        <a class="social" href="https://wa.me/+201066313097" aria-label="whatsapp"><i class="fa-brands fa-whatsapp"></i></a>
-        <a class="social" href="https://www.linkedin.com/in/mahmoud-sabbah-489956341/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
-      </div>
-    </div>
+  <footer class="site-footer">
+    <div class="container"><div class="footer-main"><a class="navbar-brand brand" href="#home">mahmoud sabbah<span>.</span></a><p>Designed with purpose. Built with clean code.</p><div class="footer-socials"><a href="https://linkedin.com/in/mahmoud-mohamed-sabbah" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a><a href="https://github.com/elhaagmahmoudsabbah" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="bi bi-github"></i></a><a href="mailto:elhaagmahmoudsabbah@gmail.com" aria-label="Email"><i class="bi bi-envelope"></i></a></div></div><div class="footer-bottom"><span>© <span id="copyrightYear"></span> Mahmoud Sabbah. All rights reserved.</span><a href="#home">Back to top <i class="bi bi-arrow-up"></i></a></div></div>
   </footer>
 
+  <button id="backToTop" class="back-to-top" type="button" aria-label="Back to top"><i class="bi bi-arrow-up"></i></button>
+
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/script.js"></script>
 </body>
 </html>
